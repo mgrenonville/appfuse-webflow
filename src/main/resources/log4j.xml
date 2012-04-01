@@ -45,7 +45,7 @@
     </logger-->
 
     <logger name="org.springframework">
-        <level value="WARN"/>
+        <level value="DEBUG"/>
     </logger>
    
     <logger name="org.appfuse">
@@ -53,11 +53,11 @@
     </logger>
 
     <logger name="org.appfuse.tool">
-        <level value="INFO"/>
+        <level value="DEBUG"/>
     </logger>
 
     <root>
-        <level value="WARN"/>
+        <level value="DEBUG"/>
         <appender-ref ref="CONSOLE"/>
     </root>
 
