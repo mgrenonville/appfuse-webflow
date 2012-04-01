@@ -13,6 +13,7 @@
                 <prop key="org.springframework.dao.DataAccessException">
                     dataAccessFailure
                 </prop>
+                <prop key="org.springframework.webflow.execution.repository.FlowExecutionRestorationFailureException">error/backButtonHandling</prop>
             </props>
         </property>
     </bean>
