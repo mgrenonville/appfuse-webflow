@@ -1,3 +1,7 @@
+<%@ page import="org.springframework.webflow.execution.repository.FlowExecutionRestorationFailureException" %>
+<%@ page import="org.springframework.webflow.execution.repository.support.CompositeFlowExecutionKey" %>
+<%@ page import="java.io.Serializable" %>
+<%@ page import="java.util.Map" %>
 <%@ include file="/common/taglibs.jsp" %>
 
 <title><spring:message code="backbuttonhandling.title" /></title>
@@ -8,11 +12,16 @@
 <p>
 
     <spring:message code="backbuttonhandling.text" />
-
-
     <%--See com.excilys.webapp.flow.listener.LastViewedUrlListener  --%>
-	<a href="${sessionScope['LAST_VIEW_RENDERED_URL']}" ><spring:message code="backbuttonhandling.resumelink.text" /></a>
+	<a href="
+<%
+    Serializable executionId = ((CompositeFlowExecutionKey) ((FlowExecutionRestorationFailureException) request.getAttribute("exception")).getFlowExecutionKey()).getExecutionId();
+
+    out.print(((Map<Serializable, String >)session.getAttribute("LAST_VIEW_RENDERED_URL")).get(executionId));
+%>
+" ><spring:message code="backbuttonhandling.resumelink.text" /></a>
 </p>
+
 
 <!--
 <% 
