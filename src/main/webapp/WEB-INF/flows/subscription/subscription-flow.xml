@@ -4,13 +4,18 @@
       xsi:schemaLocation="http://www.springframework.org/schema/webflow
                           http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 
-    <view-state id="subscription" view="flow/subscription">
-        <transition on="subscription" to="subscriptionP2" history="invalidate">
+    <var name="signupFlowState" class="com.excilys.webapp.flow.state.SignupFlowState" />
+
+    <view-state id="userInformation" view="flow/subscription" model="userInformationCommand">
+        <on-entry>
+            <set name="viewScope.userInformationCommand" value="signupFlowState.userInformationCommand" />
+        </on-entry>
+        <transition on="subscription" to="subscriptionP2" history="invalidate" validate="true">
 
         </transition>
     </view-state>
-    <view-state id="subscriptionP2" view="flow/subscription">
-        <transition on="subscription" to="subscription" history="invalidate">
+    <view-state id="subscriptionP2" view="flow/subscription" model="signupFlowState.addressCommand">
+        <transition on="subscription" to="userInformation" history="invalidate">
 
         </transition>
     </view-state>
