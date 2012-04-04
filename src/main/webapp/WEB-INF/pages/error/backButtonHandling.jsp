@@ -13,15 +13,8 @@
 
     <spring:message code="backbuttonhandling.text" />
     <%--See com.excilys.webapp.flow.listener.LastViewedUrlListener  --%>
-	<a href="
-<%
-    Serializable executionId = ((CompositeFlowExecutionKey) ((FlowExecutionRestorationFailureException) request.getAttribute("exception")).getFlowExecutionKey()).getExecutionId();
-
-    out.print(((Map<Serializable, String >)session.getAttribute("LAST_VIEW_RENDERED_URL")).get(executionId));
-%>
-" ><spring:message code="backbuttonhandling.resumelink.text" /></a>
+	<a href="${sessionScope['LAST_VIEW_RENDERED_URL'][exception.flowExecutionKey.executionId]}" ><spring:message code="backbuttonhandling.resumelink.text" /></a>
 </p>
-
 
 <!--
 <% 
