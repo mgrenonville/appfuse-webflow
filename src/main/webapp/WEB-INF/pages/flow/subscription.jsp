@@ -7,21 +7,21 @@
 <body id="signup">
 
 
-<spring:bind path="userInformationCommand.userInformationCommand.*">
-    <c:if test="${not empty status.errorMessages}">
-    <div class="error">
-        <c:forEach var="error" items="${status.errorMessages}">
-            <img src="<c:url value="/images/iconWarning.gif"/>"
-                alt="<fmt:message key="icon.warning"/>" class="icon" />
-            <c:out value="${error}" escapeXml="false"/><br />
-        </c:forEach>
-    </div>
-    </c:if>
-</spring:bind>
-
 <div class="separator"></div>
+<form action="${flowExecutionUrl}" method="POST">
 
-<ul>
+    <spring:bind path="userInformationCommand.*">
+        <c:if test="${not empty status.errorMessages}">
+            <div class="error">
+                <c:forEach var="error" items="${status.errorMessages}">
+                    <img src="<c:url value="/images/iconWarning.gif"/>"
+                         alt="<fmt:message key="icon.warning"/>" class="icon" />
+                    <c:out value="${error}" escapeXml="false"/><br />
+                </c:forEach>
+            </div>
+        </c:if>
+    </spring:bind>
+    <ul>
     <li class="info">
         <fmt:message key="signup.message"/>
     </li>
@@ -81,6 +81,6 @@
         <form:input path="userInformationCommand.website" id="website" cssClass="text large" cssErrorClass="text large error"/>
     </li>
 </ul>
-<a href="${flowExecutionUrl}&_eventId=subscription">Next</a>
-
+<input type="submit" name="_eventId_subscription" value="Next" />
+</form>
 </body>

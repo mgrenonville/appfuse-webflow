@@ -10,11 +10,14 @@
         <on-entry>
             <set name="viewScope.userInformationCommand" value="signupFlowState.userInformationCommand" />
         </on-entry>
-        <transition on="subscription" to="subscriptionP2" history="invalidate" validate="true">
+        <transition on="subscription" to="sideInformations" history="invalidate" validate="true">
 
         </transition>
     </view-state>
-    <view-state id="subscriptionP2" view="flow/subscription" model="signupFlowState.addressCommand">
+    <view-state id="sideInformations" view="flow/sideInformations" model="signupFlowState.addressCommand">
+        <on-entry>
+            <set name="viewScope.addressCommand" value="signupFlowState.addressCommand" />
+        </on-entry>
         <transition on="subscription" to="userInformation" history="invalidate">
 
         </transition>
