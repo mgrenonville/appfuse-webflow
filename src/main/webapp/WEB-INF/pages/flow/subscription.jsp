@@ -9,6 +9,9 @@
 
 <div class="separator"></div>
 <form action="${flowExecutionUrl}" method="POST">
+    <c:if test="${previousError != null}">
+       <div class="error">Error !</div>
+    </c:if>
 
     <spring:bind path="userInformationCommand.*">
         <c:if test="${not empty status.errorMessages}">

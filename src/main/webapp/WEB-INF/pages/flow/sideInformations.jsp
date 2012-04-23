@@ -55,6 +55,8 @@
                 </div>
             </li>
 </ul>
-<input type="submit" name="_eventId_subscription" value="Next" />
+    <input type="submit" name="_eventId_back" value="Back" />
+    <input type="submit" name="_eventId_finish" value="Next" />
+
 </form>
 </body>

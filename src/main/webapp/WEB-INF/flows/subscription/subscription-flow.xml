@@ -18,9 +18,21 @@
         <on-entry>
             <set name="viewScope.addressCommand" value="signupFlowState.addressCommand" />
         </on-entry>
-        <transition on="subscription" to="userInformation" history="invalidate">
+        <transition on="back" to="userInformation" history="invalidate" validate="false">
 
         </transition>
+        <transition on="finish" to="performSubscription" history="invalidate" validate="false">
+                </transition>
     </view-state>
+
+    <action-state id="performSubscription">
+        <evaluate expression="subscriptionFlowFacade.performSubscription(signupFlowState)" />
+        <transition on="success" to="finished" />
+        <transition on-exception="org.appfuse.service.UserExistsException" to="userInformation" >
+            <set name="flashScope.previousError" value="rootCauseException" />
+        </transition>
+    </action-state>
+
+    <end-state id="finished" />
 
 </flow>

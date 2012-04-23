@@ -9,7 +9,9 @@
     <context:annotation-config/>
 
     <!-- Activates scanning of @Repository and @Service -->
-    <context:component-scan base-package="com.excilys"/>
+    <context:component-scan base-package="com.excilys">
+        <context:exclude-filter type="regex" expression="com.excilys.webapp.*" />
+    </context:component-scan>
 
     <!-- Compass Search Section -->
     <!-- Compass Bean, automatically scanning for searchable classes within the model -->

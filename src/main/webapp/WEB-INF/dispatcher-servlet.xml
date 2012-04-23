@@ -28,8 +28,8 @@
     </bean> 
 
     <context:component-scan base-package="com.excilys.webapp" use-default-filters="true">
-    		<context:include-filter type="annotation"
-    			expression="com.excilys.webapp.flow.handler.FlowHandler" />
+    		<context:include-filter type="annotation" expression="com.excilys.webapp.flow.handler.FlowHandler" />
+    		<context:include-filter type="annotation" expression="com.excilys.webapp.flow.facade.FlowFacade" />
     </context:component-scan>
 
     <!-- Configures the @Controller programming model -->
