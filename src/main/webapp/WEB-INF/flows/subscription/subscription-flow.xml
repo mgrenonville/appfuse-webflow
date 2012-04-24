@@ -29,6 +29,7 @@
         <evaluate expression="subscriptionFlowFacade.performSubscription(signupFlowState)" />
         <transition on="success" to="finished" />
         <transition on-exception="org.appfuse.service.UserExistsException" to="userInformation" >
+            <!-- Refers to the exception thrown in this state -->
             <set name="flashScope.previousError" value="rootCauseException" />
         </transition>
     </action-state>
