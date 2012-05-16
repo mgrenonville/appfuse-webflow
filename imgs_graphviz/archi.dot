@@ -1,0 +1,31 @@
+digraph G {
+	graph [layout=dot rankdir=LR]
+	compound=true;
+
+	subgraph cluster0  {
+		style=filled;
+		color=lightgray;
+		label="Flow"
+		Flow
+		ViewState
+	}
+
+	subgraph cluster1  {
+		style=filled;
+		color=lightgray;
+		label="Facade"
+		FlowFacade
+	}
+
+	subgraph cluster2  {
+		style=filled;
+		color=lightgray;
+		label="Services"
+		"Service1"
+		"Service2"
+
+	}	
+	FlowFacade -> {Service1 Service2}
+	Flow -> FlowFacade [dir="both", label="FlowState" ltail=cluster0, lhead=cluster1 ]
+	ViewState -> FlowFacade [ label="Command" ltail=cluster0, lhead=cluster1 ]
+}

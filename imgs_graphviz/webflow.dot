@@ -1,0 +1,25 @@
+digraph G {
+	graph [layout=dot rankdir=LR]
+	label=""
+	subgraph cluster_0  {
+		style=filled;
+		color=lightgrey;
+		label="Execution 1"
+		E1S1 -> E1S2 [label="event1"]
+		E1S2 -> E1S3 [label="event2"]
+	}
+
+	subgraph cluster_1  {
+		style=filled;
+		color=lightgrey;
+		label="Execution 2"
+		E2S1 -> E2S4 [label="event3"]
+		E2S1 -> E2S2 [label="event1"]
+
+		E2S3-> E2S1 [style="dotted", label="backButton"]
+		E2S2 -> E2S3 [label="event2"]
+	}
+
+	{start} -> {E1S1 E2S1}
+	{E2S3 E1S3} ->  end
+}
